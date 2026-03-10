@@ -25,17 +25,17 @@ class Todo {
       this._todoElement.remove();
     });
 
-    this._todoCheckboxEl.addEventListener("change", () => {
+    this._todoCheckboxElement.addEventListener("change", () => {
       this._todoElement.classList.toggle("todo_completed");
     });
   }
 
 
-  generateCheckboxEl() {
-    this._todoCheckboxEl = this._todoElement.querySelector(".todo__completed");
+  generateCheckboxElement() {
+    this._todoCheckboxElement = this._todoElement.querySelector(".todo__completed");
     this._todoLabel = this._todoElement.querySelector(".todo__label");
-    this._todoCheckboxEl.checked = this._data.completed;
-    this._todoCheckboxEl.id = `todo-${this._data.id}`;
+    this._todoCheckboxElement.checked = this._data.completed;
+    this._todoCheckboxElement.id = `todo-${this._data.id}`;
     this._todoLabel.setAttribute("for", `todo-${this._data.id}`);
 
   }
@@ -43,15 +43,15 @@ class Todo {
     this._todoElement = this._templateElement.content
       .querySelector(".todo")
       .cloneNode(true);
-    const todoNameEl = this._todoElement.querySelector(".todo__name");
+    const todoNameElement = this._todoElement.querySelector(".todo__name");
     const todoDate = this._todoElement.querySelector(".todo__date");
     const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
+    const formattedDate = this._todoDate(this._data.date);
 
-    todoNameEl.textContent = this._data.name;
-    todoDate.textContent = this._data.date;
+    todoNameElement.textContent = this._data.name;
+    todoDate.textContent = formattedDate;
 
-    this.generateCheckboxEl();
-    this._setEventListeners();
+    this.generateCheckboxElement();
 
     todoDeleteBtn.addEventListener("click", () => {
       this._todoElement.remove();
