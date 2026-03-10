@@ -1,4 +1,4 @@
-class Todo {    
+class Todo {
   constructor(data, selector) {
     this._id = data.id;
     this._data = data;
@@ -9,18 +9,17 @@ class Todo {
   }
 
   _todoDate(dateString) {
-  const date = new Date(dateString);
-  if (isNaN(date)) return "";
+    const date = new Date(dateString);
+    if (isNaN(date)) return "";
 
-  return `Due: ${date.toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  })}`;
-}
+    return `Due: ${date.toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    })}`;
+  }
 
   _setEventListeners() {
-    this._todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
     this._todoDeleteBtn.addEventListener("click", () => {
       this._todoElement.remove();
     });
@@ -30,14 +29,13 @@ class Todo {
     });
   }
 
-
   generateCheckboxElement() {
-    this._todoCheckboxElement = this._todoElement.querySelector(".todo__completed");
+    this._todoCheckboxElement =
+      this._todoElement.querySelector(".todo__completed");
     this._todoLabel = this._todoElement.querySelector(".todo__label");
     this._todoCheckboxElement.checked = this._data.completed;
     this._todoCheckboxElement.id = `todo-${this._data.id}`;
     this._todoLabel.setAttribute("for", `todo-${this._data.id}`);
-
   }
   getView() {
     this._todoElement = this._templateElement.content
@@ -45,21 +43,15 @@ class Todo {
       .cloneNode(true);
     const todoNameElement = this._todoElement.querySelector(".todo__name");
     const todoDate = this._todoElement.querySelector(".todo__date");
-    const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
     const formattedDate = this._todoDate(this._data.date);
 
     todoNameElement.textContent = this._data.name;
     todoDate.textContent = formattedDate;
 
     this.generateCheckboxElement();
-
-    todoDeleteBtn.addEventListener("click", () => {
-      this._todoElement.remove();
-    });
-
+    this._setEventListeners();
     return this._todoElement;
   }
-
 }
 
 export default Todo;
