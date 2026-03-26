@@ -24,12 +24,14 @@ class Todo {
   _setEventListeners() {
     const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
     todoDeleteBtn.addEventListener("click", () => {
+      this._handleDelete(this._data.completed);
       this._todoElement.remove();
     });
 
     this._todoCheckboxElement.addEventListener("change", () => {
       this._todoElement.classList.toggle("todo_completed");
-      this._handleCheck(this._completed);
+      this._data.completed = this._todoCheckboxElement.checked;
+      this._handleCheck(this._data.completed);
     });
   }
 
