@@ -6,6 +6,7 @@ import Section from "../components/Section.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoForm = document.forms["add-todo-form"];
+
 import PopupWithForm from "../components/PopupWithForm.js";
 import TodoCounter from "../components/TodoCounter.js";
 

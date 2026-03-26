@@ -33,13 +33,6 @@ class Popup {
         this.close();
       }
     });
-
-    //temporary solution
-    // this._popupElement.addEventListener("click", (evt) => {
-    //   if (evt.target === this._popupElement) {
-    //     this.close();
-    //   }
-    // });
   }
 }
 

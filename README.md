@@ -45,4 +45,4 @@ Give a more detailed explanation of the project and its functionality.
 
 This project is deployed on GitHub Pages:
 
-- [GitHub](https://github.com/randyray646-cmyk/se_project_todo-app.git)
+- [GitHub](https://randyray646-cmyk.github.io/se_project_todo-app/)
